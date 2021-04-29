@@ -3,7 +3,9 @@ import React from 'react'
 import Filters from './Filters'
 import PetBrowser from './PetBrowser'
 
+
 class App extends React.Component {
+
   constructor() {
     super()
 
@@ -13,6 +15,15 @@ class App extends React.Component {
         type: 'all'
       }
     }
+  }
+
+
+  onFindPetsClick = (petsArr) => {
+   let newPetTypeArr = petsArr.filter( (pet) => pet.type === this.state.filters.type)
+    this.setState({
+      pets : newPetTypeArr
+    })
+    
   }
 
   onChangeType = (updatedFilter) => {
@@ -30,7 +41,7 @@ class App extends React.Component {
         <div className="ui container">
           <div className="ui grid">
             <div className="four wide column">
-              <Filters onChangeType={this.onChangeType}/>
+              <Filters onChangeType={this.onChangeType} onFindPetsClick={this.onFindPetsClick}/>
             </div>
             <div className="twelve wide column">
               <PetBrowser />

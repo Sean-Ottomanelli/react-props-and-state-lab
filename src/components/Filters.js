@@ -1,8 +1,8 @@
 import React from 'react'
+import {getAll} from '../data/pets.js'
 
+console.log(getAll());
 class Filters extends React.Component {
-
-
 
   render() {
     return (
@@ -18,7 +18,7 @@ class Filters extends React.Component {
         </div>
 
         <div className="field">
-          <button className="ui secondary button">Find pets</button>
+          <button onClick={() => this.props.onFindPetsClick(getAll())} className="ui secondary button">Find pets</button>
         </div>
       </div>
     )
